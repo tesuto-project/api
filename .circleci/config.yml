@@ -1,0 +1,9 @@
+version: 2
+jobs:
+  tests:
+    working_directory: ~/tmp
+    docker:
+      - image: tesutoproject/api:0.2
+    steps:
+      - checkout
+      - python manage.py test sample

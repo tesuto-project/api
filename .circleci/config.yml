@@ -17,7 +17,7 @@ jobs:
     steps:
       - run: python manage.py test sample
 workflows:
-  versions: 2
+  version: 2
   api:
     jobs:
       - build

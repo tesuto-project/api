@@ -15,4 +15,14 @@ jobs:
     docker:
       - image: tesutoproject/api:0.2
     steps:
+      - attach_workspace:
+          at: ~/tmp
       - run: python manage.py test sample
+workflows:
+  version: 2
+  api:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build

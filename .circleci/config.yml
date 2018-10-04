@@ -1,9 +1,18 @@
 version: 2
 jobs:
-  tests:
+  build:
     working_directory: ~/tmp
     docker:
       - image: tesutoproject/api:0.2
     steps:
       - checkout
-      - python manage.py test sample
+      - persist_to_workspace:
+          root: .
+          paths:
+          - .
+  test:
+    working_directory: ~/tmp
+    docker:
+      - image: tesutoproject/api:0.2
+    steps:
+      - run: python manage.py test sample

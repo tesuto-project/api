@@ -16,3 +16,11 @@ jobs:
       - image: tesutoproject/api:0.2
     steps:
       - run: python manage.py test sample
+workflows:
+  versions: 2
+  api:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
